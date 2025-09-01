@@ -1,16 +1,14 @@
-# Etapa 1: Build da aplicação
-FROM eclipse-temurin:17-jdk AS build
+# Usa uma imagem base oficial do Java
+FROM openjdk:17-jdk-slim
 
+# Define o diretório de trabalho
 WORKDIR /app
 
-COPY src/main/java/AloMundo.java .
+# Copia o código-fonte Java para o container
+COPY src/main/java/HelloWorld.java /app/
 
-RUN javac AloMundo.java
+# Compila o arquivo Java
+RUN javac HelloWorld.java
 
-FROM eclipse-temurin:17-jre-alpine
-
-WORKDIR /app
-
-COPY --from=builder /app/AloMundo.class .
-
-CMD ["java", "AloMundo"]
+# Define o comando para executar a aplicação quando o container iniciar
+CMD ["java", "HelloWorld"]
