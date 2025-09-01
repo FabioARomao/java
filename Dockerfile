@@ -5,10 +5,10 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copia o código-fonte Java para o container
-COPY src/main/java/HelloWorld.java /app/
+COPY src/main/java/AloMundo.java /app/
 
 # Compila o arquivo Java
-RUN javac HelloWorld.java
+RUN javac AloMundo.java
 
 # Define o comando para executar a aplicação quando o container iniciar
-CMD ["java", "HelloWorld"]
+CMD ["java", "AloMundo"]
